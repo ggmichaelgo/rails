@@ -93,7 +93,7 @@ module ActiveRecord
           # generate a primary key if necessary
           if model_metadata.has_primary_key_column? && !@row.include?(model_metadata.primary_key_name)
             @row[model_metadata.primary_key_name] = ActiveRecord::FixtureSet.identify(
-              @label, model_metadata.primary_key_type
+              "#{model_class.to_s}_#{@label}", model_metadata.primary_key_type
             )
           end
         end
